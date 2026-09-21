@@ -1,9 +1,12 @@
-import json
+
+from kivy.app import App
 import os
+import json
 
-
-DATA_FILE = "items.json"
-
+DATA_FILE = os.path.join(
+    App.get_running_app().user_data_dir,
+    "items.json"
+)
 
 def load_data():
     if not os.path.exists(DATA_FILE):
