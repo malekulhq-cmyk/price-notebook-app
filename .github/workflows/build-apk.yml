@@ -85,7 +85,7 @@ jobs:
       - name: Check AIDL
         run: |
           which aidl
-          aidl --version
+          
 
       - name: Install Buildozer
         run: |
