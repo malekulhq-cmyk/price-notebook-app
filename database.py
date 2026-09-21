@@ -1,23 +1,29 @@
-
 from kivy.app import App
 import os
 import json
 
-DATA_FILE = os.path.join(
-    App.get_running_app().user_data_dir,
-    "items.json"
-)
+
+def get_data_file():
+    return os.path.join(
+        App.get_running_app().user_data_dir,
+        "items.json"
+    )
+
 
 def load_data():
-    if not os.path.exists(DATA_FILE):
+    data_file = get_data_file()
+
+    if not os.path.exists(data_file):
         return []
 
-    with open(DATA_FILE, "r", encoding="utf-8") as file:
+    with open(data_file, "r", encoding="utf-8") as file:
         return json.load(file)
 
 
 def save_data(data):
-    with open(DATA_FILE, "w", encoding="utf-8") as file:
+    data_file = get_data_file()
+
+    with open(data_file, "w", encoding="utf-8") as file:
         json.dump(
             data,
             file,
